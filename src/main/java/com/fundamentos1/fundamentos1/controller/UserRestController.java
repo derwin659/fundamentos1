@@ -74,12 +74,24 @@ public class UserRestController {
         UUID id_uuid=UUID.randomUUID();
         UUID token=UUID.randomUUID();
         LocalDateTime createdDate=LocalDateTime.now();
-        userDto1.setId(id_uuid);
+
+       userDto1.setId(id_uuid);
+       newUser.setId(id_uuid);
+
         userDto1.setCreated(createdDate);
+        newUser.setCreated(createdDate);
+
         userDto1.setModified(createdDate);
+        newUser.setCreated(createdDate);
+
         userDto1.setLast_login(createdDate);
+        newUser.setLast_login(createdDate);
+
         userDto1.setToken(token);
-        userDto1.setIs_Active(newUser.getActive());
+        userCreated.setToken(token);
+
+        userDto1.setIs_Active(true);
+        userCreated.setActive(true);
 
 
         return new ResponseEntity<>(userDto1,HttpStatus.CREATED);
