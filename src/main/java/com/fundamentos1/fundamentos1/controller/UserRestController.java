@@ -1,6 +1,7 @@
 package com.fundamentos1.fundamentos1.controller;
 
 import com.fundamentos1.fundamentos1.caseuse.CreateUser;
+import com.fundamentos1.fundamentos1.caseuse.GetPhone;
 import com.fundamentos1.fundamentos1.caseuse.GetUser;
 import com.fundamentos1.fundamentos1.caseuse.UpdateUser;
 import com.fundamentos1.fundamentos1.entity.Phone;
@@ -21,13 +22,15 @@ public class UserRestController {
     //Crearemos una capa relacionada con los servicios que vamos a desplegar
     //create,get,delete,update
     private GetUser getUser;
+    private GetPhone getPhone;
     private CreateUser createUser;
 
     private UpdateUser updateUser;
     private UserRepository userRepository;
 
-    public UserRestController(GetUser getUser,CreateUser createUser,UpdateUser updateUser,UserRepository userRepository) {
+    public UserRestController(GetUser getUser,GetPhone getPhone,CreateUser createUser,UpdateUser updateUser,UserRepository userRepository) {
         this.getUser = getUser;
+        this.getPhone=getPhone;
         this.createUser=createUser;
 
         this.updateUser=updateUser;
@@ -35,9 +38,9 @@ public class UserRestController {
     }
     @GetMapping("/")
 
-    List<User> get(){
+    List<Phone> get(){
 
-        return getUser.getAll();
+        return getPhone.getAll();
     }
 
     @PostMapping(
