@@ -72,8 +72,5 @@ public class UserRestController {
        return new ResponseEntity<>(updateUser.update(newUser,id),HttpStatus.OK);
      }
 
-     @GetMapping("/pageable")
-    List<User>getUserPageable(@RequestParam int page,@RequestParam int size){
-            return userRepository.findAll(PageRequest.of(page,size)).getContent();
-     }
+
 }
