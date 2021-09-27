@@ -1,9 +1,6 @@
 package com.fundamentos1.fundamentos1.configuration;
 
-import com.fundamentos1.fundamentos1.caseuse.GetPhone;
-import com.fundamentos1.fundamentos1.caseuse.GetPhoneImplement;
-import com.fundamentos1.fundamentos1.caseuse.GetUser;
-import com.fundamentos1.fundamentos1.caseuse.GetUserImplement;
+import com.fundamentos1.fundamentos1.caseuse.*;
 import com.fundamentos1.fundamentos1.service.PhoneService;
 import com.fundamentos1.fundamentos1.service.UserService;
 import org.springframework.context.annotation.Bean;
@@ -22,4 +19,6 @@ public class CaseUseConfiguration {
 
         return new GetPhoneImplement(phoneService);
     }
+
+
 }

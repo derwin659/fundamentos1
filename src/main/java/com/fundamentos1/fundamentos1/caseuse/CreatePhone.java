@@ -4,7 +4,9 @@ import com.fundamentos1.fundamentos1.entity.Phone;
 import com.fundamentos1.fundamentos1.entity.User;
 import com.fundamentos1.fundamentos1.service.PhoneService;
 import com.fundamentos1.fundamentos1.service.UserService;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreatePhone {
 
     private PhoneService phoneService;

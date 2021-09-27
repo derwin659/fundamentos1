@@ -1,5 +1,6 @@
 package com.fundamentos1.fundamentos1.service;
 
+import com.fundamentos1.fundamentos1.entity.Phone;
 import com.fundamentos1.fundamentos1.entity.User;
 import com.fundamentos1.fundamentos1.repository.UserRepository;
 import org.apache.juli.logging.Log;
@@ -34,9 +35,10 @@ public class UserService {
 
     //Registrandoen base de datos
 
-    public User save(User newUser) {
+    public User newUser(User newUser) {
         return userRepository.save(newUser);
     }
+
 
 
 

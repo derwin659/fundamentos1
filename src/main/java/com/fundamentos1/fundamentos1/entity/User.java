@@ -29,7 +29,13 @@ public class User {
             nullable = false,
             unique = true
     )
-    private UUID id;
+
+    private int id_u;
+
+    @Column(
+            length = 50,unique = true
+    )
+    private UUID idUUID;
 
     @Column(
             length = 50
@@ -77,8 +83,9 @@ public class User {
     public User() {
     }
 
-    public User(UUID id, String name, String email, String password, List<Phone> phones, LocalDateTime created, LocalDateTime modified, LocalDateTime last_login, UUID token, Boolean isActive) {
-        this.id = id;
+    public User(int id_u,UUID idUUID, String name, String email, String password, List<Phone> phones, LocalDateTime created, LocalDateTime modified, LocalDateTime last_login, UUID token, Boolean isActive) {
+        this.id_u=id_u;
+        this.idUUID = idUUID;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -90,16 +97,24 @@ public class User {
         this.isActive = isActive;
     }
 
-    public User(UUID id) {
-        this.id = id;
+    public User(int id_u) {
+        this.id_u = id_u;
     }
 
     public UUID getId() {
-        return this.id;
+        return this.idUUID;
+    }
+
+    public int getId_u() {
+        return id_u;
+    }
+
+    public void setId_u(int id_u) {
+        this.id_u = id_u;
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.idUUID = idUUID;
     }
 
     public String getName() {
@@ -172,5 +187,22 @@ public class User {
 
     public void setActive(Boolean active) {
         this.isActive = active;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id_u=" + id_u +
+                ", id=" + idUUID +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phones=" + phones +
+                ", created=" + created +
+                ", modified=" + modified +
+                ", last_login=" + last_login +
+                ", token=" + token +
+                ", isActive=" + isActive +
+                '}';
     }
 }

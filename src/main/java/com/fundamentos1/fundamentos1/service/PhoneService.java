@@ -25,6 +25,12 @@ public class PhoneService {
     public Phone save(Phone getPhone) {
         return phoneRepository.save(getPhone);
     }
+
+    public Phone newPhone(Phone newPhone) {
+        return phoneRepository.save(newPhone);
+    }
+
+
     public Phone update(Phone newPhone, Long id) {
         return
                phoneRepository.findById(id)
@@ -39,4 +45,5 @@ public class PhoneService {
 
     }
 
+   
 }

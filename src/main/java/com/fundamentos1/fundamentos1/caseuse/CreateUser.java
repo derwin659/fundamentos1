@@ -14,6 +14,6 @@ public class CreateUser {
 
 
     public User save(User newUser) {
-        return userService.save(newUser);
+        return userService.newUser(newUser);
     }
 }
