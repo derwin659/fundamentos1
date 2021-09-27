@@ -1,6 +1,7 @@
 package com.fundamentos1.fundamentos1.controller;
 
 import com.fundamentos1.fundamentos1.caseuse.*;
+import com.fundamentos1.fundamentos1.dto.UserDto;
 import com.fundamentos1.fundamentos1.entity.Phone;
 import com.fundamentos1.fundamentos1.entity.User;
 import com.fundamentos1.fundamentos1.repository.PhoneRepository;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -47,6 +49,13 @@ public class UserRestController {
 
 
     }
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @GetMapping("/")
+
+    List<User> getUser(){
+
+        return getUser.getAll();
+    }
 
     @RequestMapping(value = "/phones", method = RequestMethod.GET)
     @GetMapping("/")
@@ -57,10 +66,23 @@ public class UserRestController {
     }
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
-    public ResponseEntity<User> newUser(@RequestBody User newUser) {
+    public ResponseEntity<UserDto> newUser(@RequestBody User newUser, UserDto userDto) {
 
-        User userCreated=userService.newUser(newUser);
-        return new ResponseEntity<>(userCreated,HttpStatus.CREATED);
+        userService.newUser(newUser);
+        UserDto userDto1=new UserDto();
+        User userCreated = new User();
+        UUID id_uuid=UUID.randomUUID();
+        UUID token=UUID.randomUUID();
+        LocalDateTime createdDate=LocalDateTime.now();
+        userDto1.setId(id_uuid);
+        userDto1.setCreated(createdDate);
+        userDto1.setModified(createdDate);
+        userDto1.setLast_login(createdDate);
+        userDto1.setToken(token);
+        userDto1.setIs_Active(newUser.getActive());
+
+
+        return new ResponseEntity<>(userDto1,HttpStatus.CREATED);
     }
 
 

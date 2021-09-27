@@ -3,13 +3,9 @@ package com.fundamentos1.fundamentos1.entity;
 
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(
@@ -38,8 +34,11 @@ public class Phone {
             length = 50
     )
     private String countryCode;
-    @ManyToOne
+    @ManyToOne()
     private User user;
+
+
+
 
     public Phone() {
     }

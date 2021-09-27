@@ -1,17 +1,20 @@
 package com.fundamentos1.fundamentos1.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class UserDto {
     private UUID id;
-    private String created;
-    private String modified;
-    private String last_login;
+    private LocalDateTime created;
+    private LocalDateTime modified;
+    private LocalDateTime last_login;
     private UUID token;
     private Boolean is_Active;
 
-    public UserDto(UUID id, String created, String modified, String last_login, UUID token, Boolean is_Active) {
+    public UserDto() {
+    }
+
+    public UserDto(UUID id, LocalDateTime created, LocalDateTime modified, LocalDateTime last_login, UUID token, Boolean is_Active) {
         this.id = id;
         this.created = created;
         this.modified = modified;
@@ -28,27 +31,27 @@ public class UserDto {
         this.id = id;
     }
 
-    public String getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public String getModified() {
+    public LocalDateTime getModified() {
         return modified;
     }
 
-    public void setModified(String modified) {
+    public void setModified(LocalDateTime modified) {
         this.modified = modified;
     }
 
-    public String getLast_login() {
+    public LocalDateTime getLast_login() {
         return last_login;
     }
 
-    public void setLast_login(String last_login) {
+    public void setLast_login(LocalDateTime last_login) {
         this.last_login = last_login;
     }
 
