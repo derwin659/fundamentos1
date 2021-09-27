@@ -54,7 +54,7 @@ public class UserRestController {
         phone.setNumber(newPhone.getNumber());
         phone.setCityCode(newPhone.getCityCode());
         phone.setCountryCode(newPhone.getCountryCode());
-        UUID User =UUID.randomUUID();
+        //UUID User =UUID.randomUUID();
         // LocalDateTime fechaCreacion=LocalDateTime.of();
         //    LocalDateTime modified=LocalDateTime.of();
         // LocalDateTime last_time=LocalDateTime.of( );

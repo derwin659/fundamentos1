@@ -45,7 +45,7 @@ public class Fundamentos1Application implements CommandLineRunner {
 	public void run(String... args){
 
 		//ejemplosAnteriores();
-		//saveUsersInDataBase();
+		saveUsersInDataBase();
 
 	}
 
@@ -53,11 +53,11 @@ public class Fundamentos1Application implements CommandLineRunner {
 
 	private void saveUsersInDataBase(){
 
-		//Phone phone1=new Phone(1,"john@domain.com", "derwin","adrian");
+		Phone phone1=new Phone(1,"john@domain.com", "derwin","adrian");
 
 
-		//List<Phone> list= Arrays.asList(phone1);
-	  //   list.stream().forEach(phoneRepository::save);
+		List<Phone> list= Arrays.asList(phone1);
+	     list.stream().forEach(phoneRepository::save);
 	}
 
 
