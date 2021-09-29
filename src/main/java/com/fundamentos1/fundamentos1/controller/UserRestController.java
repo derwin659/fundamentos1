@@ -15,9 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 //vamos a crear todos los servicios rest contenidos por un cliente
 @RestController//permite que todos los metodos se formateen con el formato JSON
@@ -66,32 +64,35 @@ public class UserRestController {
     }
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
-    public ResponseEntity<UserDto> newUser(@RequestBody User newUser, UserDto userDto) {
+    public ResponseEntity<UserDto> newUser(@RequestBody User newUser,Phone newPhones, UserDto userDto) {
 
-        userService.newUser(newUser);
+
         UserDto userDto1=new UserDto();
-        User userCreated = new User();
+      //Phone phoneCreatede=new Phone();
         UUID id_uuid=UUID.randomUUID();
         UUID token=UUID.randomUUID();
         LocalDateTime createdDate=LocalDateTime.now();
+//--------------Guardamos usuarios--------
+      // Phone listaPhones=new Phone(newPhones.getNumber(),newPhones.getCityCode(),newPhones.getCountryCode() );
+      //ArrayList<Phone> phonesArray=new ArrayList<>();
 
-       userDto1.setId(id_uuid);
-       newUser.setId(id_uuid);
+        //phonesArray.stream().forEach(phoneRepository::save);
 
-        userDto1.setCreated(createdDate);
-        newUser.setCreated(createdDate);
+        User userCreated=new User(newUser.getId_u(),id_uuid,newUser.getName(),newUser.getEmail(),newUser.getPassword(),newUser.getPhones(),createdDate,createdDate,createdDate,token,newUser.getActive());
 
-        userDto1.setModified(createdDate);
-        newUser.setCreated(createdDate);
 
-        userDto1.setLast_login(createdDate);
-        newUser.setLast_login(createdDate);
+        List<User> list= Arrays.asList(userCreated);
+        list.stream().forEach(userRepository::save);
+//---------Insertamos la informacion de salida en el dto para dar respuesta al usuairo------
 
-        userDto1.setToken(token);
-        userCreated.setToken(token);
+        userDto1.setId(userCreated.getId());
+        userDto1.setCreated(userCreated.getCreated());
+        userDto1.setModified(userCreated.getModified());
+        userDto1.setLast_login(userCreated.getLast_login());
+        userDto1.setToken(userCreated.getToken());
+        userDto1.setIs_Active(userCreated.getActive());
 
-        userDto1.setIs_Active(true);
-        userCreated.setActive(true);
+
 
 
         return new ResponseEntity<>(userDto1,HttpStatus.CREATED);

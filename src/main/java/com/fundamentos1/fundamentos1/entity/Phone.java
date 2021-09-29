@@ -43,20 +43,15 @@ public class Phone {
     public Phone() {
     }
 
-    public Phone(int id, String number, String cityCode, String countryCode) {
-        this.id = id;
+    public Phone( String number, String cityCode, String countryCode) {
+
         this.number = number;
         this.cityCode = cityCode;
         this.countryCode = countryCode;
     }
 
-    public int getId() {
-        return this.id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public String getNumber() {
         return this.number;
